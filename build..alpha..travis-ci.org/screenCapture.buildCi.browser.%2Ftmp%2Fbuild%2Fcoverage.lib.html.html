@@ -1,0 +1,790 @@
+<html lang="en"><head>
+    <title>Code coverage report for node-npmtest-react-native-fit-image/node_modules/react-native-fit-image/dist/FitImage.js</title>
+    <meta charset="utf-8">
+    <style>
+        body, html {
+            margin:0; padding: 0;
+        }
+        body {
+            font-family: Arial, Helvetica;
+            font-size: 10pt;
+        }
+        div.header, div.footer {
+            background: #eee;
+            padding: 1em;
+        }
+        div.header {
+            height: 160px;
+            padding: 0 1em 0 1em;
+            z-index: 100;
+            position: fixed;
+            top: 0;
+            border-bottom: 1px solid #666;
+            width: 100%;
+        }
+        div.footer {
+            border-top: 1px solid #666;
+        }
+        div.body {
+            margin-top: 170px;
+        }
+        div.meta {
+            font-size: 90%;
+            text-align: center;
+        }
+        h1, h2, h3 {
+            font-weight: normal;
+        }
+        h1 {
+            font-size: 12pt;
+        }
+        h2 {
+            font-size: 10pt;
+        }
+        pre {
+            font-family: Menlo, Monaco, Consolas, Courier New, monospace;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            tab-size: 2;
+        }
+
+        div.path { font-size: 110%; }
+        div.path a:link, div.path a:visited { color: #000; }
+        table.coverage { border-collapse: collapse; margin:0; padding: 0 }
+
+        table.coverage td {
+            margin: 0;
+            padding: 0;
+            color: #111;
+            vertical-align: top;
+        }
+        table.coverage td.line-count {
+            width: 50px;
+            text-align: right;
+            padding-right: 5px;
+        }
+        table.coverage td.line-coverage {
+            color: #777 !important;
+            text-align: right;
+            border-left: 1px solid #666;
+            border-right: 1px solid #666;
+        }
+
+        table.coverage td.text {
+        }
+
+        table.coverage td span.cline-any {
+            display: inline-block;
+            padding: 0 5px;
+            width: 40px;
+        }
+        table.coverage td span.cline-neutral {
+            background: #eee;
+        }
+        table.coverage td span.cline-yes {
+            background: #b5d592;
+            color: #999;
+        }
+        table.coverage td span.cline-no {
+            background: #fc8c84;
+        }
+
+        .cstat-yes { color: #111; }
+        .cstat-no { background: #fc8c84; color: #111; }
+        .fstat-no { background: #ffc520; color: #111 !important; }
+        .cbranch-no { background:  yellow !important; color: #111; }
+
+        .cstat-skip { background: #ddd; color: #111; }
+        .fstat-skip { background: #ddd; color: #111 !important; }
+        .cbranch-skip { background: #ddd !important; color: #111; }
+
+        .missing-if-branch {
+            display: inline-block;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: black;
+            color: yellow;
+        }
+
+        .skip-if-branch {
+            display: none;
+            margin-right: 10px;
+            position: relative;
+            padding: 0 4px;
+            background: #ccc;
+            color: white;
+        }
+
+        .missing-if-branch .typ, .skip-if-branch .typ {
+            color: inherit !important;
+        }
+
+        .entity, .metric { font-weight: bold; }
+        .metric { display: inline-block; border: 1px solid #333; padding: 0.3em; background: white; }
+        .metric small { font-size: 80%; font-weight: normal; color: #666; }
+
+        div.coverage-summary table { border-collapse: collapse; margin: 3em; font-size: 110%; }
+        div.coverage-summary td, div.coverage-summary table  th { margin: 0; padding: 0.25em 1em; border-top: 1px solid #666; border-bottom: 1px solid #666; }
+        div.coverage-summary th { text-align: left; border: 1px solid #666; background: #eee; font-weight: normal; }
+        div.coverage-summary th.file { border-right: none !important; }
+        div.coverage-summary th.pic { border-left: none !important; text-align: right; }
+        div.coverage-summary th.pct { border-right: none !important; }
+        div.coverage-summary th.abs { border-left: none !important; text-align: right; }
+        div.coverage-summary td.pct { text-align: right; border-left: 1px solid #666; }
+        div.coverage-summary td.abs { text-align: right; font-size: 90%; color: #444; border-right: 1px solid #666; }
+        div.coverage-summary td.file { text-align: right; border-left: 1px solid #666; white-space: nowrap;  }
+        div.coverage-summary td.pic { min-width: 120px !important;  }
+        div.coverage-summary a:link { color: #000; }
+        div.coverage-summary a:visited { color: #333; }
+        div.coverage-summary tfoot td { border-top: 1px solid #666; }
+
+        div.coverage-summary .yui3-datatable-sort-indicator, div.coverage-summary .dummy-sort-indicator {
+            height: 10px;
+            width: 7px;
+            display: inline-block;
+            margin-left: 0.5em;
+        }
+        div.coverage-summary .yui3-datatable-sort-indicator {
+            background: no-repeat scroll 0 0 transparent;
+        }
+        div.coverage-summary .yui3-datatable-sorted .yui3-datatable-sort-indicator {
+            background-position: 0 -20px;
+        }
+        div.coverage-summary .yui3-datatable-sorted-desc .yui3-datatable-sort-indicator {
+            background-position: 0 -10px;
+        }
+
+        .high { background: #b5d592 !important; }
+        .medium { background: #ffe87c !important; }
+        .low { background: #fc8c84 !important; }
+
+        span.cover-fill, span.cover-empty {
+            display:inline-block;
+            border:1px solid #444;
+            background: white;
+            height: 12px;
+        }
+        span.cover-fill {
+            background: #ccc;
+            border-right: 1px solid #444;
+        }
+        span.cover-empty {
+            background: white;
+            border-left: none;
+        }
+        span.cover-full {
+            border-right: none !important;
+        }
+        pre.prettyprint {
+            border: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+        .com { color: #999 !important; }
+        .ignore-none { color: #999; font-weight: normal; }
+
+    </style>
+</head>
+<body>
+<div class="header low">
+    <h1 style="font-weight: bold;">
+        <a href="https://github.com/npmtest/node-npmtest-react-native-fit-image">npmtest-react-native-fit-image (v0.0.1)</a>
+    </h1>
+    <h1>Code coverage report for <span class="entity">node-npmtest-react-native-fit-image/node_modules/react-native-fit-image/dist/FitImage.js</span></h1>
+    <h2>
+        
+        Statements: <span class="metric">10.71% <small>(12 / 112)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Branches: <span class="metric">1.41% <small>(1 / 71)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Functions: <span class="metric">3.85% <small>(1 / 26)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        
+        Lines: <span class="metric">4.76% <small>(3 / 63)</small></span> &nbsp;&nbsp;&nbsp;&nbsp;
+        
+        Ignored: <span class="metric"><span class="ignore-none">none</span></span> &nbsp;&nbsp;&nbsp;&nbsp;
+    </h2>
+    <div class="path"><a href="../../../../index.html">All files</a> » <a href="index.html">node-npmtest-react-native-fit-image/node_modules/react-native-fit-image/dist/</a> » FitImage.js</div>
+</div>
+<div class="body">
+<pre><table class="coverage">
+<tbody><tr><td class="line-count">1
+2
+3
+4
+5
+6
+7
+8
+9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21
+22
+23
+24
+25
+26
+27
+28
+29
+30
+31
+32
+33
+34
+35
+36
+37
+38
+39
+40
+41
+42
+43
+44
+45
+46
+47
+48
+49
+50
+51
+52
+53
+54
+55
+56
+57
+58
+59
+60
+61
+62
+63
+64
+65
+66
+67
+68
+69
+70
+71
+72
+73
+74
+75
+76
+77
+78
+79
+80
+81
+82
+83
+84
+85
+86
+87
+88
+89
+90
+91
+92
+93
+94
+95
+96
+97
+98
+99
+100
+101
+102
+103
+104
+105
+106
+107
+108
+109
+110
+111
+112
+113
+114
+115
+116
+117
+118
+119
+120
+121
+122
+123
+124
+125
+126
+127
+128
+129
+130
+131
+132
+133
+134
+135
+136
+137
+138
+139
+140
+141
+142
+143
+144
+145
+146
+147
+148
+149
+150
+151
+152
+153
+154
+155
+156
+157
+158
+159
+160
+161
+162
+163
+164
+165
+166
+167
+168
+169
+170
+171
+172
+173
+174
+175
+176
+177
+178
+179
+180
+181
+182
+183
+184
+185
+186
+187
+188
+189
+190</td><td class="line-coverage"><span class="cline-any cline-yes">2</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">Object.defineProperty(exports,"__esModule",{value:true});var _jsxFileName='src/FitImage.js';var _createClass=function(){<span class="fstat-no" title="function not covered">function defineProperties(target,props){<span class="cstat-no" title="statement not covered"></span>for(var i=0;i&lt;props.length;i++){<span class="cstat-no" title="statement not covered">var descriptor=props[i];<span class="cstat-no" title="statement not covered">d</span>escriptor.enumerable=descriptor.enumerable||false;<span class="cstat-no" title="statement not covered">d</span>escriptor.configurable=true;<span class="cstat-no" title="statement not covered">i</span>f("value" in descriptor)<span class="cstat-no" title="statement not covered">descriptor.writable=true;<span class="cstat-no" title="statement not covered">O</span></span>bject.defineProperty(target,descriptor.key,descriptor);}</span>}</span>return <span class="fstat-no" title="function not covered">function(Constructor,protoProps,staticProps){<span class="cstat-no" title="statement not covered"></span>if(protoProps)<span class="cstat-no" title="statement not covered">defineProperties(Constructor.prototype,protoProps);<span class="cstat-no" title="statement not covered">i</span></span>f(staticProps)<span class="cstat-no" title="statement not covered">defineProperties(Constructor,staticProps);<span class="cstat-no" title="statement not covered">r</span></span>eturn Constructor;}</span>;}();var _extends=Object.assign||<span class="fstat-no" title="function not covered"><span class="branch-1 cbranch-no" title="branch not covered">function(target){<span class="cstat-no" title="statement not covered"></span>for(var i=1;i&lt;arguments.length;i++){<span class="cstat-no" title="statement not covered">var source=arguments[i];<span class="cstat-no" title="statement not covered">f</span>or(var key in source){<span class="cstat-no" title="statement not covered">if(Object.prototype.hasOwnProperty.call(source,key)){<span class="cstat-no" title="statement not covered">target[key]=source[key];}</span>}</span>}<span class="cstat-no" title="statement not covered"></span>r</span>eturn target;}</span>;</span>var _react=require('react');<span class="cstat-no" title="statement not covered">var _react2=_interopRequireDefault(_react);</span>
+<span class="cstat-no" title="statement not covered">var _reactNative=require('react-native');<span class="fstat-no" title="function not covered">f</span>unction _interopRequireDefault(obj){<span class="cstat-no" title="statement not covered"></span>return obj&amp;&amp;obj.__esModule?obj:{default:obj};}<span class="fstat-no" title="function not covered"></span>function _classCallCheck(instance,Constructor){<span class="cstat-no" title="statement not covered"></span>if(!(instance instanceof Constructor)){<span class="cstat-no" title="statement not covered">throw new TypeError("Cannot call a class as a function");}</span>}<span class="fstat-no" title="function not covered"></span>function _possibleConstructorReturn(self,call){<span class="cstat-no" title="statement not covered"></span>if(!self){<span class="cstat-no" title="statement not covered">throw new ReferenceError("this hasn't been initialised - super() hasn't been called");}<span class="cstat-no" title="statement not covered"></span>r</span>eturn call&amp;&amp;(typeof call==="object"||typeof call==="function")?call:self;}<span class="fstat-no" title="function not covered"></span>function _inherits(subClass,superClass){<span class="cstat-no" title="statement not covered"></span>if(typeof superClass!=="function"&amp;&amp;superClass!==null){<span class="cstat-no" title="statement not covered">throw new TypeError("Super expression must either be null or a function, not "+typeof superClass);}<span class="cstat-no" title="statement not covered"></span>s</span>ubClass.prototype=Object.create(superClass&amp;&amp;superClass.prototype,{constructor:{value:subClass,enumerable:false,writable:true,configurable:true}});<span class="cstat-no" title="statement not covered">i</span>f(superClass)<span class="cstat-no" title="statement not covered">Object.setPrototypeOf?Object.setPrototypeOf(subClass,superClass):subClass.__proto__=superClass;}</span></span>
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered">var propTypes=_extends({},</span>
+_reactNative.Image.propTypes,{
+indicator:_react.PropTypes.bool,
+indicatorColor:_react.PropTypes.string,
+indicatorSize:_react.PropTypes.oneOfType([
+_react.PropTypes.oneOf(['small','large']),
+_react.PropTypes.number]),
+&nbsp;
+originalHeight:_react.PropTypes.number,
+originalWidth:_react.PropTypes.number});
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered">var styles=_reactNative.StyleSheet.create({</span>
+container:{
+alignItems:'center',
+justifyContent:'center'}});<span class="cstat-no" title="statement not covered">var </span>
+&nbsp;
+&nbsp;
+&nbsp;
+FitImage=<span class="fstat-no" title="function not covered">function(_Image){<span class="cstat-no" title="statement not covered"></span>_inherits(FitImage,_Image);</span>
+<span class="fstat-no" title="function not covered">function FitImage(props){<span class="cstat-no" title="statement not covered"></span>_classCallCheck(this,FitImage);<span class="cstat-no" title="statement not covered">v</span>ar _this=_possibleConstructorReturn(this,Object.getPrototypeOf(FitImage).call(this,</span>
+props));
+&nbsp;
+<span class="cstat-no" title="statement not covered">_this.style=_reactNative.StyleSheet.flatten(props.style);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">if(_this.style){</span>
+<span class="cstat-no" title="statement not covered">var size=[_this.style.width,_this.style.height];</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">if(size.filter(<span class="fstat-no" title="function not covered">function(e){<span class="cstat-no" title="statement not covered"></span>return e;}</span>).length===1){</span>
+<span class="cstat-no" title="statement not covered">throw new Error('Props error: size props must be present '+</span>
+'none or both of width and height.');}}
+&nbsp;
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered">var originalSize=[props.originalWidth,props.originalHeight];</span>
+<span class="cstat-no" title="statement not covered">if(originalSize.filter(<span class="fstat-no" title="function not covered">function(e){<span class="cstat-no" title="statement not covered"></span>return e;}</span>).length===1){</span>
+<span class="cstat-no" title="statement not covered">throw new Error('Props error: originalSize props must be present '+</span>
+'none or both of originalWidth and originalHeight.');}
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered">_this.isFirstLoad=true;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">_this.state={</span>
+height:0,
+isLoading:false,
+layoutWidth:undefined,
+originalWidth:undefined,
+originalHeight:undefined};
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered">_this.getHeight=_this.getHeight.bind(_this);</span>
+<span class="cstat-no" title="statement not covered">_this.getOriginalHeight=_this.getOriginalHeight.bind(_this);</span>
+<span class="cstat-no" title="statement not covered">_this.getOriginalWidth=_this.getOriginalWidth.bind(_this);</span>
+<span class="cstat-no" title="statement not covered">_this.getRatio=_this.getRatio.bind(_this);</span>
+<span class="cstat-no" title="statement not covered">_this.getStyle=_this.getStyle.bind(_this);</span>
+<span class="cstat-no" title="statement not covered">_this.onLoad=_this.onLoad.bind(_this);</span>
+<span class="cstat-no" title="statement not covered">_this.onLoadStart=_this.onLoadStart.bind(_this);</span>
+<span class="cstat-no" title="statement not covered">_this.renderChildren=_this.renderChildren.bind(_this);</span>
+<span class="cstat-no" title="statement not covered">_this.resize=_this.resize.bind(_this);</span>
+<span class="cstat-no" title="statement not covered">_this.setStateSize=_this.setStateSize.bind(_this);<span class="cstat-no" title="statement not covered">r</span>eturn _this;}<span class="cstat-no" title="statement not covered"></span>_createClass(FitImage,[{key:'componentDidMount',value:<span class="fstat-no" title="function not covered">function componentDidMount()</span></span>
+&nbsp;
+&nbsp;
+{<span class="cstat-no" title="statement not covered">var _this2=this;</span>
+<span class="cstat-no" title="statement not covered">if(this.props.originalWidth&amp;&amp;this.props.originalHeight)<span class="cstat-no" title="statement not covered">return;</span></span>
+<span class="cstat-no" title="statement not covered">if(!this.props.source.uri)<span class="cstat-no" title="statement not covered">return;</span></span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">this.mounted=true;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">_reactNative.Image.getSize(this.props.source.uri,<span class="fstat-no" title="function not covered">function(originalWidth,originalHeight){</span></span>
+<span class="cstat-no" title="statement not covered">if(!_this2.mounted){</span>
+<span class="cstat-no" title="statement not covered">return;}</span>
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered">_this2.setStateSize(originalWidth,originalHeight);}</span>);}},{key:'componentWillUnmount',value:<span class="fstat-no" title="function not covered">function componentWillUnmount()</span>
+&nbsp;
+&nbsp;
+&nbsp;
+{
+<span class="cstat-no" title="statement not covered">this.mounted=false;}</span>},{key:'onLoad',value:<span class="fstat-no" title="function not covered">function onLoad()</span>
+&nbsp;
+&nbsp;
+{
+<span class="cstat-no" title="statement not covered">this.setState({isLoading:false});</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">if(typeof this.props.onLoad==='function'){</span>
+<span class="cstat-no" title="statement not covered">this.props.onLoad();}</span>}},{key:'onLoadStart',value:<span class="fstat-no" title="function not covered">function onLoadStart()</span>
+&nbsp;
+&nbsp;
+&nbsp;
+{
+<span class="cstat-no" title="statement not covered">if(this.isFirstLoad){</span>
+<span class="cstat-no" title="statement not covered">this.setState({isLoading:true});</span>
+<span class="cstat-no" title="statement not covered">this.isFirstLoad=false;}</span>}},{key:'getHeight',value:<span class="fstat-no" title="function not covered">function getHeight(</span>
+&nbsp;
+&nbsp;
+&nbsp;
+layoutWidth){
+<span class="cstat-no" title="statement not covered">if(this.style&amp;&amp;this.style.height){</span>
+<span class="cstat-no" title="statement not covered">return this.style.height;}</span>
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered">return this.getOriginalHeight()*this.getRatio(layoutWidth);}</span>},{key:'getOriginalHeight',value:<span class="fstat-no" title="function not covered">function getOriginalHeight()</span>
+&nbsp;
+&nbsp;
+{
+<span class="cstat-no" title="statement not covered">return this.props.originalHeight||this.state.originalHeight;}</span>},{key:'getOriginalWidth',value:<span class="fstat-no" title="function not covered">function getOriginalWidth()</span>
+&nbsp;
+&nbsp;
+{
+<span class="cstat-no" title="statement not covered">return this.props.originalWidth||this.state.originalWidth;}</span>},{key:'getRatio',value:<span class="fstat-no" title="function not covered">function getRatio(</span>
+&nbsp;
+&nbsp;
+width){
+<span class="cstat-no" title="statement not covered">var layoutWidth=width||this.state.layoutWidth;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">return layoutWidth/this.getOriginalWidth();}</span>},{key:'getStyle',value:<span class="fstat-no" title="function not covered">function getStyle()</span>
+&nbsp;
+&nbsp;
+{
+<span class="cstat-no" title="statement not covered">if(this.style&amp;&amp;this.style.width){</span>
+<span class="cstat-no" title="statement not covered">return {width:this.style.width};}</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">return {flexGrow:1};}</span>},{key:'resize',value:<span class="fstat-no" title="function not covered">function resize(</span>
+&nbsp;
+&nbsp;
+event){<span class="cstat-no" title="statement not covered">var </span>
+width=event.nativeEvent.layout.width;
+<span class="cstat-no" title="statement not covered">var height=this.getHeight(width);</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">this.setState({</span>
+height:height,
+layoutWidth:width});}},{key:'setStateSize',value:<span class="fstat-no" title="function not covered">function setStateSize(</span>
+&nbsp;
+&nbsp;
+&nbsp;
+originalWidth,originalHeight){
+<span class="cstat-no" title="statement not covered">var height=this.state.layoutWidth/originalWidth;</span>
+&nbsp;
+<span class="cstat-no" title="statement not covered">this.setState({</span>
+height:height,
+originalHeight:originalHeight,
+originalWidth:originalWidth});}},{key:'renderChildren',value:<span class="fstat-no" title="function not covered">function renderChildren()</span>
+&nbsp;
+&nbsp;
+&nbsp;
+{
+<span class="cstat-no" title="statement not covered">if(this.state.isLoading&amp;&amp;this.props.indicator!==false){</span>
+<span class="cstat-no" title="statement not covered">return (</span>
+_react2.default.createElement(_reactNative.ActivityIndicator,{
+color:this.props.indicatorColor,
+size:this.props.indicatorSize,__source:{fileName:_jsxFileName,lineNumber:156}}));}
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered">return this.props.children;}</span>},{key:'render',value:<span class="fstat-no" title="function not covered">function render()</span>
+&nbsp;
+&nbsp;
+{
+<span class="cstat-no" title="statement not covered">return (</span>
+_react2.default.createElement(_reactNative.Image,_extends({},
+this.props,{
+onLayout:this.resize,
+onLoad:this.onLoad,
+onLoadStart:this.onLoadStart,
+source:this.props.source,
+style:[
+this.style,
+this.getStyle(),
+{height:this.state.height},
+styles.container],__source:{fileName:_jsxFileName,lineNumber:168}}),
+&nbsp;
+&nbsp;
+this.renderChildren()));}}]);<span class="cstat-no" title="statement not covered">return FitImage;}</span>(_reactNative.Image);
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+<span class="cstat-no" title="statement not covered">FitImage.propTypes=propTypes;<span class="cstat-no" title="statement not covered">e</span>xports.default=</span>
+&nbsp;
+FitImage;
+&nbsp;</pre></td></tr>
+</tbody></table></pre>
+</div>
+<div class="footer">
+    <div class="meta">Generated by <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a> at Sun Apr 23 2017 11:08:47 GMT+0000 (UTC)</div>
+</div>
+
+
+</body></html>
