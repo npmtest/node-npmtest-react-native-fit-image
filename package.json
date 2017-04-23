@@ -1,1 +1,39 @@
-{     "devDependencies": {         "electron-lite": "kaizhu256/node-electron-lite#alpha",         "utility2": "kaizhu256/node-utility2#alpha"     },     "name":"npmtest-react-native-fit-image",     "homepage": "https://github.com/npmtest/node-npmtest-react-native-fit-image",     "repository": {         "type": "git",         "url": "https://github.com/npmtest/node-npmtest-react-native-fit-image.git"     },     "scripts": {         "build-ci": "utility2 shReadmeTest build_ci.sh"     },     "version": "0.0.1" }
+{
+    "author": "kai zhu <kaizhu256@gmail.com>",
+    "description": "#### basic test coverage for  [react-native-fit-image (v1.4.8)](https://github.com/huiseoul/react-native-fit-image#readme)  [![npm package](https://img.shields.io/npm/v/npmtest-react-native-fit-image.svg?style=flat-square)](https://www.npmjs.org/package/npmtest-react-native-fit-image) [![travis-ci.org build-status](https://api.travis-ci.org/npmtest/node-npmtest-react-native-fit-image.svg)](https://travis-ci.org/npmtest/node-npmtest-react-native-fit-image)",
+    "devDependencies": {
+        "electron-lite": "kaizhu256/node-electron-lite#alpha",
+        "utility2": "kaizhu256/node-utility2#alpha"
+    },
+    "engines": {
+        "node": ">=4.0"
+    },
+    "homepage": "https://github.com/npmtest/node-npmtest-react-native-fit-image",
+    "keywords": [
+        "coverage",
+        "test",
+        "react-native-fit-image"
+    ],
+    "license": "MIT",
+    "main": "lib.npmtest_react_native_fit_image.js",
+    "name": "npmtest-react-native-fit-image",
+    "nameAlias": "npmtest_react_native_fit_image",
+    "nameOriginal": "npmtest-react-native-fit-image",
+    "os": [
+        "darwin",
+        "linux"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/npmtest/node-npmtest-react-native-fit-image.git"
+    },
+    "scripts": {
+        "build-ci": "utility2 shReadmeTest build_ci.sh",
+        "env": "env",
+        "heroku-postbuild": "npm install \"kaizhu256/node-utility2#alpha\" && utility2 shDeployHeroku",
+        "postinstall": "[ ! -f npm_scripts.sh ] || ./npm_scripts.sh postinstall",
+        "start": "PORT=${PORT:-8080} utility2 start test.js",
+        "test": "(set -e; export PORT=$(utility2 shServerPortRandom); utility2 test test.js)"
+    },
+    "version": "2017.4.24"
+}
